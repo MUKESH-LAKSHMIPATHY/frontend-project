@@ -1,0 +1,181 @@
+/* theme.css - Professional, Elegant Theme */
+:root {
+  --primary: #1976d2;
+  --primary-dark: #125ea2;
+  --accent: #43a047;
+  --accent-dark: #2e7031;
+  --bg: #f6f9fb;
+  --surface: #fff;
+  --border: #e3e3e3;
+  --shadow: 0 2px 8px #0001;
+  --radius: 12px;
+  --font-main: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  --text-main: #222;
+  --text-light: #888;
+  --sidebar-bg: #181f2a;
+  --sidebar-active: #4fc3f7;
+}
+
+body {
+  background: var(--bg);
+  font-family: var(--font-main);
+  color: var(--text-main);
+  margin: 0;
+}
+
+.elevated {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.table th, .table td {
+  padding: 1rem;
+  text-align: left;
+}
+
+.table th {
+  background: #f4f8fb;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.table tr {
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s;
+}
+
+.table tr:last-child {
+  border-bottom: none;
+}
+
+.btn {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1.5rem;
+  font-weight: bold;
+  font-size: 15px;
+  box-shadow: 0 1px 4px #1976d233;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn:hover {
+  background: var(--primary-dark);
+}
+
+.btn-accent {
+  background: var(--accent);
+}
+
+.btn-accent:hover {
+  background: var(--accent-dark);
+}
+
+.textarea, textarea {
+  color: var(--text-main) !important;
+  background: #f8fafc;
+  width: 100%;
+  resize: vertical;
+  border-radius: 8px;
+  border: 1px solid #bdbdbd;
+  padding: 8px;
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.sidebar {
+  width: 220px;
+  background: var(--sidebar-bg);
+  color: #fff;
+  min-height: 100vh;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-weight: 500;
+}
+
+.sidebar-link {
+  color: #fff;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: 8px 0 0 8px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.sidebar-link.active {
+  color: var(--sidebar-active);
+  background: #232b3b;
+}
+
+.navbar {
+  width: 100%;
+  background: var(--surface);
+  border-bottom: 1px solid #e0e0e0;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+}
+
+.profile-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--sidebar-active);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+input, select {
+  border-radius: 8px;
+  border: 1px solid #bdbdbd;
+  padding: 0.5rem;
+  font-size: 15px;
+  background: #f8fafc;
+  margin-bottom: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+select, option {
+  color: var(--text-main) !important;
+  background: #f8fafc;
+}
+
+label {
+  font-weight: 500;
+  margin-bottom: 8px;
+  display: block;
+}
+
+h1, h2, h3, h4, h5 {
+  color: var(--primary);
+  font-family: var(--font-main);
+}
