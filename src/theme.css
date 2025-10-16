@@ -162,11 +162,18 @@ input, select {
   margin-bottom: 16px;
   width: 100%;
   box-sizing: border-box;
+  color: var(--text-main) !important;
 }
 
 select, option {
   color: var(--text-main) !important;
   background: #f8fafc;
+}
+
+/* placeholder color for inputs and textareas */
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-light);
 }
 
 label {

@@ -7,6 +7,7 @@ const AssignedTasks = () => {
   const { tasks, updateTaskStatus, submitTask } = useTaskContext();
   const { employeeName } = useOutletContext();
   const [submissions, setSubmissions] = useState({});
+  const [backendStatuses, setBackendStatuses] = useState({});
 
   const myTasks = tasks.filter(task => task.assignedTo === employeeName);
 
@@ -22,12 +23,13 @@ const AssignedTasks = () => {
     }
   };
 
-  const handleSubmission = (taskIdx) => {
+  const handleSubmission = async (taskIdx) => {
     const globalIndex = tasks.findIndex(
       t => t.assignedTo === employeeName && t.title === myTasks[taskIdx].title && t.date === myTasks[taskIdx].date
     );
     if (globalIndex !== -1 && submissions[taskIdx]) {
-      submitTask(globalIndex, submissions[taskIdx]);
+      const result = await submitTask(globalIndex, submissions[taskIdx], employeeName);
+      setBackendStatuses({ ...backendStatuses, [taskIdx]: result.taskStatus });
       setSubmissions({ ...submissions, [taskIdx]: '' });
     }
   };
@@ -60,7 +62,14 @@ const AssignedTasks = () => {
                   <td>{task.title}</td>
                   <td>{task.description}</td>
                   <td>{task.date}</td>
-                  <td>{task.status}</td>
+                  <td>
+                    {task.status}
+                    {task.backendStatus || backendStatuses[index] ? (
+                      <div style={{ color: task.backendStatus === 'completed' || backendStatuses[index] === 'completed' ? '#388e3c' : '#d32f2f', fontSize: 13, marginTop: 4, fontWeight: 500 }}>
+                        Backend Status: {task.backendStatus || backendStatuses[index]}
+                      </div>
+                    ) : null}
+                  </td>
                   <td>
                     <button className="btn" onClick={() => handleStatusChange(index)}>
                       Update

@@ -2,7 +2,7 @@ import React from 'react';
 import { useTaskContext } from '../context/TaskContext';
 
 const AssignedTasks = ({ employeeName }) => {
-  const { tasks, updateTaskStatus } = useTaskContext();
+  const { tasks, updateTaskStatus, fetchTasks, loading } = useTaskContext();
 
   const myTasks = tasks.filter(task => task.assignedTo === employeeName);
 
@@ -22,6 +22,9 @@ const AssignedTasks = ({ employeeName }) => {
   return (
     <div style={{ marginTop: '2rem', color: '#222' }}>
       <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: '#222' }}>My Tasks</h2>
+      <button onClick={fetchTasks} disabled={loading} style={{ marginBottom: '1rem', background: '#1976d2', color: '#fff', border: 'none', borderRadius: 8, padding: '0.5rem 1.5rem', fontWeight: 'bold', cursor: 'pointer' }}>
+        {loading ? 'Refreshing...' : 'Refresh Tasks'}
+      </button>
       {myTasks.length === 0 ? (
         <p>No tasks assigned yet.</p>
       ) : (
